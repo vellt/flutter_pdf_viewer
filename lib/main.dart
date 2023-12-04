@@ -3,13 +3,17 @@ import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: MainApp(),
+    home: MainApp(
+        url:
+            'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf'),
     debugShowCheckedModeBanner: false,
   ));
 }
 
 class MainApp extends StatelessWidget {
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
+  MainApp({required this.url});
+  String url;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +33,7 @@ class MainApp extends StatelessWidget {
           ),
         ],
       ),
-      body: SfPdfViewer.network(
-        'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
-        key: _pdfViewerKey,
-      ),
+      body: SfPdfViewer.network(url, key: _pdfViewerKey),
     );
   }
 }
